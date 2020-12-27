@@ -1,0 +1,27 @@
+{% extends 'authentication/base.html' %}
+
+{% block title%}
+    Register
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'main:register' %}" method="POST">
+        {% csrf_token %}
+
+        <label for="username">Username:</label>
+        {{ form.username }}
+        {{ form.username.errors }}
+
+        <label for="password">Password:</label>
+        {{ form.password1 }}
+        {{ form.password1.errors }}
+
+        <label for="repeat-password">Repeat password:</label>
+        {{ form.password2 }}
+        {{ form.password2.errors }}
+
+        <button type="submit">Register</button>
+
+        <a href="{% url 'main:login' %}">You already have account? Login here!</a>
+    </form>
+{% endblock %}
