@@ -1,4 +1,4 @@
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
@@ -111,7 +111,7 @@ def user(request, username):
             except:
                 posts.append(Post(project, False))
 
-        return render(request, 'user.html', {'user' : user, 'posts' : posts, 'count' : len(posts)})
+        return render(request, 'user.html', {'user' : request.user, 'profile' : user, 'posts' : posts, 'count' : len(posts)})
     except:
         raise Http404()
 
@@ -133,6 +133,43 @@ def add(request):
 
     return render(request, 'add.html', {'form' : form})
         
+
+@login_required
+def remove(request, id):
+    if request.method == 'GET':
+        try:
+            project = Project.objects.get(id=id)
+            project.delete()
+        except:
+            raise Http404()
+
+        return redirect('main:home')
+
+    raise Http404()
+
+@login_required
+def edit(request, id):
+    try:
+        project = Project.objects.get(id=id)
+    except:
+        raise Http404()
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        form.image
+        if form.is_valid():
+            project.title = form.cleaned_data.get('title')
+            project.image = form.cleaned_data.get('image')
+            project.description = form.cleaned_data.get('description')
+            project.save()
+            return redirect('main:project', id=id)
+
+        else:
+            return render(request, 'edit.html', {'form' : form, 'project' : project})
+
+    else:
+        form = ProjectForm(instance=project)
+        return render(request, 'edit.html', {'form' : form, 'project' : project})
 
 
 

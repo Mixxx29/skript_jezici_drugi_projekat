@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Project</title>
+
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/add.css' %}">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    {% include 'header.html' with add=True %}
+
+    <div class='content-container'>
+        <form action="{% url 'main:edit' project.id %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {{ form.non_field_errors }}
+            
+            <label for="title">Title:</label>
+            {{ form.title }}
+            {{ form.title.errors }}
+    
+            <label for="image">Thumbnail:</label>
+            {{ form.image }}
+            {{ form.image.errors }}
+
+            <label for="description">Description:</label>
+            {{ form.description }}
+            {{ form.description.errors }}
+    
+            <button type="submit">Save</button>
+        </form>
+    </div>
+    
+</body>
+</html>

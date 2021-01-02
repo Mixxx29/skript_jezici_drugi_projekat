@@ -2,6 +2,54 @@ body {
     font-family: 'Montserrat', sans-serif;
 }
 
+p {
+    font-size: 16pt;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.flex > * {
+    margin: 0;
+    margin-right: 1vh;
+}
+
+.owner {
+    background-color: inherit;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    top: 10vh;
+    right: 5%;
+}
+
+.owner a {
+    background-color: inherit;
+    box-shadow: 0 0 30px gray;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    margin-top: 5vh;
+}
+
+.owner a p {
+    font-size: 16pt;
+    font-weight: 700;
+    margin: 0;
+    padding-left: 10px;
+}
+
+.owner a:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px 5px gray;
+}
+
 .content-container {
     width: 50%;
     margin-left: 25%;
@@ -15,13 +63,27 @@ h1 {
 
 .thumbnail {
     width: 100%;
+    margin-bottom: 2vh;
+}
+.project-title {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
 }
 
-.project-title h1, .project-title p, .project-title a {
-    display: inline-block;
+.project-title > * {
+    margin-left: 2vh;
 }
 
 .project-title a {
-    font-size: 16pt;
+    font-size: 18pt;
+    text-decoration: underline;
     color: inherit; 
 } 
+
+.description {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2vh;
+}
+

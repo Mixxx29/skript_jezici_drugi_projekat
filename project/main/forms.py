@@ -51,6 +51,7 @@ class LoginForm(AuthenticationForm):
 
 
 class ProjectForm(ModelForm):
+
     class Meta:
         model = Project
         fields = ['title', 'image', 'description']

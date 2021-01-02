@@ -21,6 +21,19 @@
 
         {% include 'header.html' with add=True %}
 
+        {% if post.project.user == user %}
+            <div class="owner">
+                <a href="{% url 'main:edit' post.project.id %}" class="">
+                    <img src="{% static 'img/edit.png' %}" alt="Edit" class="">
+                    <p>Edit Project</p>
+                </a>
+                <a href="{% url 'main:remove' post.project.id %}" class="">
+                    <img src="{% static 'img/delete.png' %}" alt="Delete" class="">
+                    <p>Delete Project</p>
+                </a>
+            </div>
+        {% endif %}
+
         <div class="content-container">
             <div class="project-title">
                 <h1>{{ post.project.title }}</h1>
@@ -28,13 +41,15 @@
                 <a href="{% url 'main:user' post.project.user.username %}">{{ post.project.user.username }}</a>
             </div>
             <img src="{{ post.project.image.url }}" alt="Project Thumbnail" class="thumbnail">
-            {% if post.liked %}
-                <img src="{% static 'img/full-heart.png' %}" alt="Liked" class="">
-            {% else %}
-                <img src="{% static 'img/empty-heart.png' %}" alt="Not Liked" class="">
-            {% endif %}
-            <p>{{ post.project.like_set.count }} likes</p>
-            <p>{{ post.project.description }}</p>
+            <div class="flex">
+                {% if post.liked %}
+                    <img src="{% static 'img/full-heart.png' %}" alt="Liked" class="">
+                {% else %}
+                    <img src="{% static 'img/empty-heart.png' %}" alt="Not Liked" class="">
+                {% endif %}
+                <p>{{ post.project.like_set.count }} likes</p>
+            </div>
+            <p class="description">{{ post.project.description }}</p>
             {% if post.liked %}
                 <a href="{% url 'main:dislike' post.project.id %}" class="btn btn-primary">Dislike</a>
             {% else %}

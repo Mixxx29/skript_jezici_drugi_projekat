@@ -33,6 +33,7 @@
     }
     
     header h1 {
+        font-size: 40pt;
         font-weight: 100;
         text-decoration: underline;
         margin: 0;
@@ -67,14 +68,21 @@
         position: fixed;
         top: 15vh;
         box-shadow: 0 0 30px gray;
-        border-radius: 30px;
+        border-radius: 50px;
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        
+        padding: 10px;
+    }
+
+    .add-button p {
+        font-size: 16pt;
+        padding-left: 10px;
     }
 
     .add-button:hover {
         transform: scale(1.1);
+        box-shadow: 0 0 20px 5px gray;
     }
 </style>

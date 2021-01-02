@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ user.username }}</title>
+        <title>{{ logged_user.username }}</title>
 
         
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
@@ -25,13 +25,13 @@
             <div class="user-header">
                 <div>
                     <img src="{% static 'img/avatar.png' %}" alt="User Image">
-                    <h1>{{ user.username }}</h1>
+                    <h1>{{ profile.username }}</h1>
                 </div>
                 <p>{{ count }} projects</p>
             </div>
             <div class="posts-container">
                 {% for post in posts %}
-                    {% include 'project_card.html' with user=user post=post %}
+                    {% include 'project_card.html' with post=post %}
                 {% endfor %}
             </div>
         </div>

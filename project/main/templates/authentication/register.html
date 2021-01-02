@@ -8,20 +8,28 @@
     <form action="{% url 'main:register' %}" method="POST">
         {% csrf_token %}
 
-        <label for="username">Username:</label>
-        {{ form.username }}
-        {{ form.username.errors }}
+        <p class="title">Register</p>
 
-        <label for="password">Password:</label>
-        {{ form.password1 }}
-        {{ form.password1.errors }}
+        <div class="tile">
+            <label for="username">Username:</label>
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
 
-        <label for="repeat-password">Repeat password:</label>
-        {{ form.password2 }}
-        {{ form.password2.errors }}
+        <div class="tile">
+            <label for="password">Password:</label>
+            {{ form.password1 }}
+            {{ form.password1.errors }}
+        </div>
 
-        <button type="submit">Register</button>
+        <div class="tile">
+            <label for="repeat-password">Repeat password:</label>
+            {{ form.password2 }}
+            {{ form.password2.errors }}
+        </div>
 
-        <a href="{% url 'main:login' %}">You already have account? Login here!</a>
+        <button type="submit" class="btn btn-primary">Register</button>
+
+        <a href="{% url 'main:login' %}" >You already have account? Login here!</a>
     </form>
 {% endblock %}

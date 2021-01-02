@@ -7,18 +7,24 @@
 {% block content %}
     <form action="{% url 'main:login' %}" method="POST">
         {% csrf_token %}
+
+        <p class="title">Login</p>
         
         {{ form.non_field_errors }}
         
-        <label for="username">Username:</label>
-        {{ form.username }}
-        {{ form.username.errors }}
+        <div class="tile">
+            <label for="username">Username:</label>
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
 
-        <label for="password">Password:</label>
-        {{ form.password }}
-        {{ form.password.errors }}
+        <div class="tile">
+            <label for="password">Password:</label>
+            {{ form.password }}
+            {{ form.password.errors }}
+        </div>
 
-        <button type="submit">Login</button>
+        <button type="submit" class="btn btn-primary">Login</button>
 
         <a href="{% url 'main:register' %}">You don't have account? Register here!</a>
     </form>
