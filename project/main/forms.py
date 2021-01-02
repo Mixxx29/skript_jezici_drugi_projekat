@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 from django import forms
+from .models import Project
 
 class RegisterForm(UserCreationForm):
 
@@ -11,7 +12,7 @@ class RegisterForm(UserCreationForm):
             'placeholder' : 'Enter username...', 
             'id' : 'username'
             },
-    ), min_length=3, max_length=32)
+    ))
 
     password1 = forms.CharField(widget=forms.PasswordInput(
         attrs={
@@ -48,4 +49,9 @@ class LoginForm(AuthenticationForm):
         }
     ))
 
+
+class ProjectForm(ModelForm):
+    class Meta:
+        model = Project
+        fields = ['title', 'image', 'description']
         

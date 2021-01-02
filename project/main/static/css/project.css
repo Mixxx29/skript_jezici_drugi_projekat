@@ -1,0 +1,27 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.content-container {
+    width: 50%;
+    margin-left: 25%;
+    padding: 12vh 1% 2% 1%;
+    box-shadow: 0 5px 10px gray;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+.thumbnail {
+    width: 100%;
+}
+
+.project-title h1, .project-title p, .project-title a {
+    display: inline-block;
+}
+
+.project-title a {
+    font-size: 16pt;
+    color: inherit; 
+} 
